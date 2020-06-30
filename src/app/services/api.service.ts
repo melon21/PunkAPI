@@ -8,9 +8,14 @@ import { IBeer } from '../ibeer';
 })
 export class ApiService {
 
+  private BeerUrl = 'https://api.punkapi.com/v2/beers';
   constructor(private httpClient: HttpClient) { }
 
-  async get(): Promise<IBeer[]> {
-    return this.httpClient.get<IBeer[]>('https://api.punkapi.com/v2/beers').toPromise();
+  async get(options?: any): Promise<IBeer[]> {
+    return this.httpClient.get<IBeer[]>(this.BeerUrl,
+      {
+        headers: null,
+        params: options
+      }).toPromise();
   }
-}
+  }
